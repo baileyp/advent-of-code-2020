@@ -14,3 +14,18 @@ def part1(file):
         if second in expenses:
             return first * second
     raise DesignError
+
+def part2(file):
+    """
+    O(n^3) time, O(n) space
+    :param file:
+    :return:
+    """
+    expenses = [int(line) for line in file]
+    for first in expenses:
+        for second in expenses:
+            for third in expenses:
+                if first + second + third == 2020:
+                    return first * second * third
+
+    raise DesignError

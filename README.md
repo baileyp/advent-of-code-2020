@@ -42,7 +42,15 @@ unless otherwise noted.
 
 Here are my thoughts or lessons learned from the puzzles.
 
-*No puzzles yet!*
+#### Day 1 ([puzzle](https://adventofcode.com/2020/day/1), [solution](./aoc/solution/day01.py))
+
+Nothing crazy with this one - to be expected for the first day. I will note that my solution for part 1 would miss the
+edge case of the expense pair being `1010` and `1010` but I figured that was not very likely and wanted to optimize for
+**O(1)** lookups of the 2nd value by using `set()`. Also, because the loop pops items off the set, this algorithm is
+technically asymptotic. Either way, is it a bit of a cheat to call this **O(n)** time instead of **O(n^2)**? Maybe ;)
+
+For part 2, there might be some trick that avoids cubic time but I had a finite amount of time this morning and, well,
+in this case `n` is only 200 so I just went with it. Would love to come back when I have more time and do better.
 
 ## Testing
 
