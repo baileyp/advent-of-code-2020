@@ -52,6 +52,15 @@ technically asymptotic. Either way, is it a bit of a cheat to call this **O(n)**
 For part 2, there might be some trick that avoids cubic time but I had a finite amount of time this morning and, well,
 in this case `n` is only 200 so I just went with it. Would love to come back when I have more time and do better.
 
+#### Day 2 ([puzzle](https://adventofcode.com/2020/day/2), [solution](./aoc/solution/day02.py))
+
+I always seem to fall back to regex to parse input like this. I can't always tell if it's the best solution or just a
+lazy crutch because I've written gobs of regex in my career and they just come very easily to me. At any rate, input
+parsing is not really the point of the challenges these puzzles are all about, but it still must be done.
+
+As to the solutions, I pretty much just went straight for the easiest and most clear implementation. Use Python's
+`str.count()` and the native `[]` substring syntax with just a dabble of XOR and that was it.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
