@@ -44,13 +44,17 @@ Here are my thoughts or lessons learned from the puzzles.
 
 #### Day 1 ([puzzle](https://adventofcode.com/2020/day/1), [solution](./aoc/solution/day01.py))
 
-Nothing crazy with this one - to be expected for the first day. I will note that my solution for part 1 would miss the
+Nothing crazy with this one - to be expected for the first day. ~~I will note that my solution for part 1 would miss the
 edge case of the expense pair being `1010` and `1010` but I figured that was not very likely and wanted to optimize for
-**O(1)** lookups of the 2nd value by using `set()`. Also, because the loop pops items off the set, this algorithm is
-technically asymptotic. Either way, is it a bit of a cheat to call this **O(n)** time instead of **O(n^2)**? Maybe ;)
+**O(1)** lookups of the 2nd value by using `set()`.~~ I came back to this and added an integration test for this
+edge case and updated the implementation, which is now definitely in quadratic time. There's a linear time solution here
+but I'll leave that as an exercise for another day. Also, because the loop pops items off the set, this algorithm is
+technically asymptotic. ~~Either way, is it a bit of a cheat to call this **O(n)** time instead of **O(n^2)**? Maybe ;)~~
 
 For part 2, there might be some trick that avoids cubic time but I had a finite amount of time this morning and, well,
 in this case `n` is only 200 so I just went with it. Would love to come back when I have more time and do better.
+*UPDATE:* I added an integration test for the edge case where the same value could be used twice (thrice is not valid
+since 2020 does not evenly divide into three) and updated the implementation to accomodate it. Still cubic time though.
 
 #### Day 2 ([puzzle](https://adventofcode.com/2020/day/2), [solution](./aoc/solution/day02.py))
 
