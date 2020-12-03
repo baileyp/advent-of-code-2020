@@ -65,6 +65,12 @@ parsing is not really the point of the challenges these puzzles are all about, b
 As to the solutions, I pretty much just went straight for the easiest and most clear implementation. Use Python's
 `str.count()` and the native `[]` substring syntax with just a dabble of XOR and that was it.
 
+#### Day 3 ([puzzle](https://adventofcode.com/2020/day/3), [solution](./aoc/solution/day03.py))
+
+Uh, I guess this is just grid traversal? Not too bad. I used some "tricks" in part one to avoid manipulating position
+cursors (`deque` ftw) for the "infinite-width" part of this puzzle, but for part 2 it seemed unavoidable due to the need
+to reset and walk the grid multiple times.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
