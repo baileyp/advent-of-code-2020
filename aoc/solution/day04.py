@@ -19,13 +19,7 @@ def part1(file):
     :param file:
     :return:
     """
-    valid_count = 0
-
-    for passport in passports_from_file(file):
-        if is_valid(passport, REQUIRED_FIELDS):
-            valid_count += 1
-
-    return valid_count
+    return sum(is_valid(passport, REQUIRED_FIELDS) for passport in passports_from_file(file))
 
 
 def part2(file):
@@ -34,13 +28,7 @@ def part2(file):
     :param file:
     :return:
     """
-    valid_count = 0
-
-    for passport in passports_from_file(file):
-        if is_valid_strict(passport, FIELD_VALIDATIONS):
-            valid_count += 1
-
-    return valid_count
+    return sum(is_valid_strict(passport, FIELD_VALIDATIONS) for passport in passports_from_file(file))
 
 
 def passports_from_file(file):
