@@ -77,10 +77,11 @@ First puzzle where parsing the input is bit more challenging since a single "inp
 Fortunately dictionary merging in Python is pretty easy so no real headache there, although this made me consider
 upgrading to 3.9 for dict unions = `a | b` is just so much nicer than `{**a, **b}`.
 
-I kind of lament that I had to tag a second "is valid" check at the end of the processing loop but that's just an
+~~I kind of lament that I had to tag a second "is valid" check at the end of the processing loop but that's just an
 artifact of the single-item-across-lines thing. I suppose I could have split the input across double-newlines and
 processed it that way, but then that either kills the **O(1)** space or would involve a whole new iterator for reading
-files - just didn't seem worth my time.
+files - just didn't seem worth my time.~~ Taking an *excellent* suggestion from a colleague, I moved the passport
+creation into a generator - brilliant! Dunno why I didn't think of that - maybe not enough ☕
 
 Part two combined with my goals (decently designed and tested solutions) made for a lot of code, but that's what I set
 out to do so, there ya go. Nobody said unit testing was terse. One nice side-effect of this kind of TDD is that once I

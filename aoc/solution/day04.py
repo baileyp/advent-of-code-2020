@@ -20,18 +20,10 @@ def part1(file):
     :return:
     """
     valid_count = 0
-    passport = dict()
 
-    for line in file:
-        if line is '':
-            if is_valid(passport, REQUIRED_FIELDS):
-                valid_count += 1
-            passport = dict()
-            continue
-        passport = {**passport, **line_to_passport_fields(line)}
-
-    if is_valid(passport, REQUIRED_FIELDS):
-        valid_count += 1
+    for passport in passports_from_file(file):
+        if is_valid(passport, REQUIRED_FIELDS):
+            valid_count += 1
 
     return valid_count
 
@@ -43,20 +35,25 @@ def part2(file):
     :return:
     """
     valid_count = 0
+
+    for passport in passports_from_file(file):
+        if is_valid_strict(passport, FIELD_VALIDATIONS):
+            valid_count += 1
+
+    return valid_count
+
+
+def passports_from_file(file):
     passport = dict()
 
     for line in file:
         if line is '':
-            if is_valid_strict(passport, FIELD_VALIDATIONS):
-                valid_count += 1
+            yield passport
             passport = dict()
             continue
         passport = {**passport, **line_to_passport_fields(line)}
 
-    if is_valid_strict(passport, FIELD_VALIDATIONS):
-        valid_count += 1
-
-    return valid_count
+    yield passport
 
 
 def line_to_passport_fields(line):

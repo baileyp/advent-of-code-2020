@@ -1,6 +1,17 @@
 import pytest
+from unittest import mock
+
 
 from aoc.solution import day04
+
+
+def test_passports_from_file():
+    file = ['a', 'b', '', 'c']
+    mock_line_to_passport_fields = mock.Mock(side_effect=[{'a': 1}, {'b': 2}, {'c': 3}])
+    with mock.patch('aoc.solution.day04.line_to_passport_fields', mock_line_to_passport_fields):
+        passports = list(day04.passports_from_file(file))
+        mock_line_to_passport_fields.assert_has_calls([mock.call(line) for line in file if line != ''])
+        assert passports == [{'a': 1, 'b': 2}, {'c': 3}]
 
 
 @pytest.mark.parametrize('pattern, fields', [
@@ -11,7 +22,7 @@ from aoc.solution import day04
         'hcl': '#fffffd'
     }),
 ])
-def test_parse_line(pattern, fields):
+def test_line_to_passport_fields(pattern, fields):
     assert day04.line_to_passport_fields(pattern) == fields
 
 
