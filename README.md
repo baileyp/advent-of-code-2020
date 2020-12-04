@@ -71,6 +71,22 @@ Uh, I guess this is just grid traversal? Not too bad. I used some "tricks" in pa
 cursors (`deque` ftw) for the "infinite-width" part of this puzzle, but for part 2 it seemed unavoidable due to the need
 to reset and walk the grid multiple times.
 
+#### Day 4 ([puzzle](https://adventofcode.com/2020/day/4), [solution](./aoc/solution/day04.py))
+
+First puzzle where parsing the input is bit more challenging since a single "input" is spread across multiple lines.
+Fortunately dictionary merging in Python is pretty easy so no real headache there, although this made me consider
+upgrading to 3.9 for dict unions = `a | b` is just so much nicer than `{**a, **b}`.
+
+I kind of lament that I had to tag a second "is valid" check at the end of the processing loop but that's just an
+artifact of the single-item-across-lines thing. I suppose I could have split the input across double-newlines and
+processed it that way, but then that either kills the **O(1)** space or would involve a whole new iterator for reading
+files - just didn't seem worth my time.
+
+Part two combined with my goals (decently designed and tested solutions) made for a lot of code, but that's what I set
+out to do so, there ya go. Nobody said unit testing was terse. One nice side-effect of this kind of TDD is that once I
+have all the code written and all the tests pass, I actually do get the correct puzzle answer on the first try every
+time - at least so far ;)
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
