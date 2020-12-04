@@ -39,8 +39,7 @@ def part2(file):
             col += slope_x
             row += slope_y
 
-            if col >= cols:
-                col -= cols
+            col %= cols
 
             if (lines[row][col]) == '#':
                 trees += 1
