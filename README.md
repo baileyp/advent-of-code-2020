@@ -92,7 +92,7 @@ time - at least so far ;)
 
 I was holding my breath for the first puzzle that would demand recursion. Fortunately this is a simple recursive algo,
 although I'm convinced there are some sort of "maths" tricks that would maybe make partitioning a list in such a way
-just completely irrelevant. Either way, I went with what I knew and can't complain about **log2** time complexity for
+just completely irrelevant†. Either way, I went with what I knew and can't complain about **log2** time complexity for
 that part.
 
 One thing I tried to look up is how aggregate functions like `max()` perform when a generator is passed. I assumed worst
@@ -103,6 +103,22 @@ Part 2 of this puzzle is, so far, the only time I couldn't write an integration 
 technically could have written a unit test for part 2 but that just didn't seem worth my time. Fortunately, running a
 diff on sets in Python is pretty simple so I had a high amount of confidence in the result and I did indeed get the
 correct answer without any further modifications to the code. Putting on bow on this one and calling it a day.
+
+† Yup - not long after I finished I was reading some other solutions and found what I sort of suspected - the boarding
+passes are just obfuscated binary numbers. With that, my `seat_id()` function could be re-written to something like this:
+
+```python
+def seat_id(boarding_pass):
+    as_binary = boarding_pass\
+        .replace('B', '1')\
+        .replace('F', '0')\
+        .replace('R', '1')\
+        .replace('L', '0')
+    return int(as_binary, 2)
+```
+
+This would completely eliminate the recursion and a lot of unit tests. Still, my solution is my solution so I'm not
+going to formally change it, but I did want to make a note here for posterity.
 
 ## Testing
 
