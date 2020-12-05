@@ -11,7 +11,14 @@ def part1(file):
 
 
 def part2(file):
-    return None
+    """
+    O(n) time and space
+    :param file:
+    :return:
+    """
+    seat_ids = set(seat_id(boarding_pass) for boarding_pass in file)
+    all_seat_ids = set(range(min(seat_ids), max(seat_ids) + 1))
+    return all_seat_ids.difference(seat_ids).pop()
 
 
 def seat_id(boarding_pass):
