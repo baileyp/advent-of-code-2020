@@ -8,3 +8,10 @@ from aoc.solution import day06
 ])
 def test_group_answers_from_file(file, group_answers):
     assert list(day06.group_answers_from_file(file)) == group_answers
+
+
+@pytest.mark.parametrize('file, group_answers', [
+    (['ab', 'bc', '', 'ce'], [{'b'}, {'c', 'e'}])
+])
+def test_group_consensus_answers_from_file(file, group_answers):
+    assert list(day06.group_consensus_answers_from_file(file)) == group_answers

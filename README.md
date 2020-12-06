@@ -120,6 +120,13 @@ def seat_id(boarding_pass):
 This would completely eliminate the recursion and a lot of unit tests. Still, my solution is my solution so I'm not
 going to formally change it, but I did want to make a note here for posterity.
 
+#### Day 6 ([puzzle](https://adventofcode.com/2020/day/6), [solution](./aoc/solution/day06.py))
+
+If there ever was a puzzle designed for the union and intersection of sets, this is it, and that's pretty much all I did
+here. Borrowing the [generator technique from day 4](./aoc/solution/day04.py) these puzzles were some of the easiest to
+solve so far. Only "trick" I had to do here was for part 2 where the sets had to be initialized with the "full universe"
+of answers so that the initial intersection in each group's iteration would succeed.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
