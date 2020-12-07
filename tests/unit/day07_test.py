@@ -25,5 +25,5 @@ def test_parse_line(line, bag, contents):
     ('b', 'd', [['b']]),
     ('b', 'c', []),
 ])
-def test_dfs(node, search, paths):
-    assert list(day07.dfs(GRAPH, node, search, [node], set())) == paths
+def test_find_paths(node, search, paths):
+    assert list(day07.find_paths(GRAPH, node, search, [node], set())) == paths

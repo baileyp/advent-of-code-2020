@@ -127,6 +127,21 @@ here. Borrowing the [generator technique from day 4](./aoc/solution/day04.py) th
 solve so far. Only "trick" I had to do here was for part 2 where the sets had to be initialized with the "full universe"
 of answers so that the initial intersection in each group's iteration would succeed.
 
+#### Day 7 ([puzzle](https://adventofcode.com/2020/day/7), [solution](./aoc/solution/day07.py))
+
+I'm not great at graph problems and today was no exception. I knew that I needed to build a graph, which I did as an
+adjacency list, and I knew I'd need a DFS function to walk the graph. Also, since the graph is technically a
+[DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph), I needed to account for multiple paths between two nodes. I
+eventually settled on a generator that would yield a path stack every time the target node was found, and then just let
+set-uniqueness remove the duplicates.
+
+For part 2 thought it was going to be pretty easy but I kept getting the wrong answers from my integration tests.
+Eventually I figured it out and there was a bug in how I was doing the math - I forgot to count the "outer" bags, with
+the math looking like this `quantity * inner bag count` instead of `quantity * inner bag count + quantity`. Once that
+modification was added everything worked perfectly.
+
+*Note:* Probably the most complex input parsing so far this year.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
