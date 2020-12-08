@@ -142,6 +142,21 @@ modification was added everything worked perfectly.
 
 *Note:* Probably the most complex input parsing so far this year.
 
+#### Day 8 ([puzzle](https://adventofcode.com/2020/day/8), [solution](./aoc/solution/day08.py))
+
+Assembler! Ok, I don't love the code I'm pushing for this puzzle. It works, and it performs fine, but it feels clunky
+and hacked. The state duplication-as-copies feels janky, forcing the value of the accumulater in part 2 feels **really**
+janky, etc. I even skipped some unit tests today because I've been real busy. Will I come back to this and fix it?
+Probably not, but maybe. If future puzzles require this program again, I guess I'll likely have to.
+
+I've seen and done these opcode puzzles in previous years so I already had some context and expectations. This is the
+first class I've written for AoC this year - whenever I start to see lots of state pile up, I default to OOD - it's
+just where my experience is. I think that actually made things complicated for me this time around.
+
+It's also the first day where part 2 introduced enough of a change that I made medium-significant changes to part 1 to 
+accommodate - sometimes a sign that the original design was bad, sometimes not. Either way, as lukewarm as I feel about
+this code, it does perform really well and produces the right answers so I guess I can't complain about that.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.

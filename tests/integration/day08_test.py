@@ -4,9 +4,7 @@ from io import StringIO
 from aoc.solution import day08
 from aoc.util import FileReader
 
-
-@pytest.mark.parametrize('test_case, result', [
-    ("""nop +0
+INSTRUCTIONS = """nop +0
 acc +1
 jmp +4
 acc +3
@@ -14,7 +12,11 @@ jmp -3
 acc -99
 acc +1
 jmp -4
-acc +6""", 5)
+acc +6"""
+
+
+@pytest.mark.parametrize('test_case, result', [
+    (INSTRUCTIONS, 5)
 ])
 def test_part_1(test_case, result):
     file = StringIO(test_case)
@@ -22,7 +24,7 @@ def test_part_1(test_case, result):
 
 
 @pytest.mark.parametrize('test_case, result', [
-    ('', None),
+    (INSTRUCTIONS, 8),
 ])
 def test_part_2(test_case, result):
     file = StringIO(test_case)
