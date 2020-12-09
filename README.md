@@ -164,9 +164,13 @@ To me this puzzle feels all about using the right data structures to keep perfor
 well as double-ended queues for managing the working set of numbers in constant time and space as well.
 
 For part 2, I couldn't think of a better solution than just a pair of cursors that walk the list and test sums of the
-input numbers between those two cursors until a valid result was found. Early-breaking the loop is key for performance
+input numbers between those two cursors until a valid result was found. ~~Early-breaking the loop is key for performance
 though - without that this solution takes about 10x longer. So, although it's worst-case an **On(^2)** algorithm, in
-application the performance is much better than that.
+application the performance is much better than that.~~ This morning I had somehow convinced myself that a linear-time
+algorithm here wouldn't work unless the list was sorted. I honestly don't recall how I got to that conclusion but it
+kind of bugged me to push with the performance caveat that I did, so after conferring with some friends I did confirm
+that this is possible in linear time *without* sorting, so I updated my solution to reflect. And it *does* perform
+better: previous runs took about 0.22 seconds and now it's averaging 0.003 - ~70x faster!
 
 *Side note:* Today is a day where the unit tests really covered me, especially for part 2. I wrote enough tests with
 some edge cases that I sorted out some index goofs in my implementation. Once the tests were passing, BOOM, right answer

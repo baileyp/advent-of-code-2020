@@ -25,7 +25,7 @@ def part1(file, preamble_size=25):
 
 def part2(file, preamble_size=25):
     """
-    O(n^2) time and O(n) space
+    O(n) time and space
     :param file:
     :param preamble_size:
     :return:
@@ -41,14 +41,25 @@ def part2(file, preamble_size=25):
 
 
 def find_contiguous_sums_to(numbers, target_sum):
-    for l in range(len(numbers) - 2):
-        for r in range(l + 2, len(numbers) + 1):
-            contiguous = numbers[l:r]
-            contiguous_sum = sum(contiguous)
-            if contiguous_sum == target_sum:
-                return contiguous
-            if contiguous_sum > target_sum:
-                break
+    left, right = 0, 0
+    running_sum = 0
+
+    def valid_sum():
+        return running_sum == target_sum and right - left > 1
+
+    while right < len(numbers):
+        running_sum += numbers[right]
+        right += 1
+
+        if valid_sum():
+            return numbers[left:right]
+
+        while running_sum > target_sum:
+            running_sum -= numbers[left]
+            left += 1
+
+            if valid_sum():
+                return numbers[left:right]
     return None
 
 
