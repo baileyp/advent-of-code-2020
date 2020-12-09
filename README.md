@@ -157,6 +157,21 @@ It's also the first day where part 2 introduced enough of a change that I made m
 accommodate - sometimes a sign that the original design was bad, sometimes not. Either way, as lukewarm as I feel about
 this code, it does perform really well and produces the right answers so I guess I can't complain about that.
 
+#### Day 9 ([puzzle](https://adventofcode.com/2020/day/9), [solution](./aoc/solution/day09.py))
+
+To me this puzzle feels all about using the right data structures to keep performance tidy. In part 1, I used a map
+(`dict()` in Python) for constant-time lookups so that finding a valid sum would be **O(n)** instead of **O(n^2)**, as
+well as double-ended queues for managing the working set of numbers in constant time and space as well.
+
+For part 2, I couldn't think of a better solution than just a pair of cursors that walk the list and test sums of the
+input numbers between those two cursors until a valid result was found. Early-breaking the loop is key for performance
+though - without that this solution takes about 10x longer. So, although it's worst-case an **On(^2)** algorithm, in
+application the performance is much better than that.
+
+*Side note:* Today is a day where the unit tests really covered me, especially for part 2. I wrote enough tests with
+some edge cases that I sorted out some index goofs in my implementation. Once the tests were passing, BOOM, right answer
+on the first try.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.

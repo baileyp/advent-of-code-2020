@@ -1,5 +1,7 @@
 from collections import deque
 
+from aoc.exceptions import DesignError
+
 
 def part1(file, preamble_size=25):
     """
@@ -21,7 +23,32 @@ def part1(file, preamble_size=25):
     return test
 
 
-def part2(file):
+def part2(file, preamble_size=25):
+    """
+    O(n^2) time and O(n) space
+    :param file:
+    :param preamble_size:
+    :return:
+    """
+    numbers = [int(line) for line in file]
+    target_sum = part1(numbers, preamble_size)
+
+    contiguous = find_contiguous_sums_to(numbers, target_sum)
+    if contiguous:
+        return min(contiguous) + max(contiguous)
+
+    raise DesignError
+
+
+def find_contiguous_sums_to(numbers, target_sum):
+    for l in range(len(numbers) - 2):
+        for r in range(l + 2, len(numbers) + 1):
+            contiguous = numbers[l:r]
+            contiguous_sum = sum(contiguous)
+            if contiguous_sum == target_sum:
+                return contiguous
+            if contiguous_sum > target_sum:
+                break
     return None
 
 
