@@ -1,6 +1,6 @@
 def part1(file):
     """
-    O(log n) time and O(1) space
+    O(n log n) time and O(1) space
     :param file:
     :return:
     """
@@ -18,4 +18,28 @@ def part1(file):
 
 
 def part2(file):
-    return None
+    """
+    O(n log n) time and O(1) space
+    :param file:
+    :return:
+    """
+    num_permutations = 1
+    for diffs in find_contiguous_1_jolt_diffs(sorted(int(line) for line in file)):
+        num_permutations *= min(1 << len(diffs) - 2, 7)
+    return num_permutations
+
+
+def find_contiguous_1_jolt_diffs(jolts):
+    contiguous = [0]
+    rating = 0
+    for jolt in jolts:
+        if jolt - rating == 1:
+            contiguous.append(jolt)
+        else:
+            if len(contiguous) > 2:
+                yield contiguous
+            contiguous = [jolt]
+        rating = jolt
+    if len(contiguous) > 2:
+        yield contiguous
+

@@ -176,6 +176,28 @@ better: previous runs took about 0.22 seconds and now it's averaging 0.003 - ~70
 some edge cases that I sorted out some index goofs in my implementation. Once the tests were passing, BOOM, right answer
 on the first try.
 
+#### Day 10 ([puzzle](https://adventofcode.com/2020/day/10), [solution](./aoc/solution/day10.py))
+
+As soon as I solved part 1 in basically the time it took to type the code (read: it was *easy*) I knew part 2 would be a
+doozy.
+
+It became clear really fast that part 2 was a permutation calculation. At first I had a mild heart attack because I
+wasn't sure how I was going to address really large, contiguous sections of 1-diffs and still obey the 3-volt-diff rule.
+But then I considered that the challenge might not be that hard so I coded up a quick test and found that no contiguous
+section was larger than five. *Excellent*.
+
+From there it was actually remarkably simple. Arrangements are based on whether or not the adapter is present, so just
+binary math at that point to get the number of permutations per contiguous group. Only groups of three or more are valid
+since the "bookends" of the group cannot be removed, so `2 ^ (group size - 2)` is the math. **However** - when the group
+size is five then one of the combinations, all adapters removed, is not valid as it breaks the 3-volt-diff rule - so
+those have to be filtered out.
+
+The last "gotcha" was making sure `0` was included in the list so that the correctly-sized contiguous group at the start
+of the chain would be generated.
+
+Solutions to both parts required sorting (not sure this is solvable without it) so all the time complexity comes from
+that, but I'm really happy that both parts are solvable in **O(1)** space.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
