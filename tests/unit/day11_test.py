@@ -1,6 +1,25 @@
 import pytest
+from unittest import mock
 
 from aoc.solution import day11
+
+FLOOR1 = """.......#.
+...#.....
+.#.......
+.........
+..#L....#
+....#....
+.........
+#........
+...#....."""
+
+FLOOR2 = """.##.##.
+#.#.#.#
+##...##
+...L...
+##...##
+#.#.#.#
+.##.##."""
 
 
 @pytest.mark.parametrize('row, col, height, width, neighbors', [
@@ -29,3 +48,31 @@ def test_count_occupied(seats, count):
 ])
 def test_apply_rules(seat, num, result):
     assert day11.apply_rules(seat, num) == result
+
+
+def test_count_visible():
+    floor = []
+    row = 'a'
+    col = 'b'
+    width = 1
+    height = 2
+
+    mock_occupied_visible_on_path = mock.Mock(side_effect=list(range(8)))
+    with mock.patch('aoc.solution.day11.occupied_visible_on_path', mock_occupied_visible_on_path):
+        assert day11.count_visible(row, col, floor, height, width) == sum(range(8))
+
+
+@pytest.mark.parametrize('floor, row, col, step, result', [
+    (FLOOR1, 0, 3, lambda r, c: (r + 1, c), True),
+    (FLOOR1, 1, 3, lambda r, c: (r + 1, c), False),
+    (FLOOR1, 4, 3, lambda r, c: (r + 1, c), True),
+    (FLOOR1, 3, 2, lambda r, c: (r - 1, c - 1), True),
+    (FLOOR1, 3, 2, lambda r, c: (r + 1, c + 1), False),
+])
+def test_occupied_visible_on_path(floor, row, col, step, result):
+    floor = [list(line) for line in floor.split("\n")]
+
+    width = len(floor[0])
+    height = len(floor)
+
+    assert day11.occupied_visible_on_path(row, col, floor, height, width, step) == result

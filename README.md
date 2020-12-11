@@ -198,6 +198,19 @@ of the chain would be generated.
 Solutions to both parts required sorting (not sure this is solvable without it) so all the time complexity comes from
 that, but I'm really happy that both parts are solvable in **O(1)** space.
 
+#### Day 11 ([puzzle](https://adventofcode.com/2020/day/11), [solution](./aoc/solution/day11.py))
+
+[Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) anyone? I'm pretty sure I've seen one of these
+"generational mutation" puzzles before, maybe in a past AoC. I have to be honest, I don't think they're terribly
+enjoyable. Not particularly hard, just a bit - annoying? - writing a bunch of code to traverse a grid space. Maybe
+somebody who knows numpy or itertools a lot better than I do would feel differently? The only "trick" here is that all
+the changes to the generation are applied at once so the way I managed that was just into a copy of the entire grid -
+there might be a more elegant solution.
+
+Neither of these are super speedy - every square in the grid has to be assessed for every generation of the seat map. I
+have been getting part 1 results in around 4.5 seconds and part 2 results in around 5.5 seconds - seems about right
+given the extra time complexity required for part 2.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
