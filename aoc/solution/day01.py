@@ -15,6 +15,7 @@ def part1(file):
             return first * second
     raise DesignError
 
+
 def part2(file):
     """
     O(n^3) time, O(n) space

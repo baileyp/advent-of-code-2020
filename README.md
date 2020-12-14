@@ -211,6 +211,17 @@ Neither of these are super speedy - every square in the grid has to be assessed 
 have been getting part 1 results in around 4.5 seconds and part 2 results in around 5.5 seconds - seems about right
 given the extra time complexity required for part 2.
 
+#### Day 12 ([puzzle](https://adventofcode.com/2020/day/12), [solution](./aoc/solution/day12.py))
+
+I'm typing this on Monday and I did part 1 on Saturday morning, so I'm having a little bit of a hard time remembering
+exactly what was on my mind when I got started, but I dont recall being bowled-over by this problem. Just moving a point
+around a cartesian plane.
+
+For part 2 I decided to keep the waypoint as just an offset and never calculate it's true position. I also descided to
+handled rotation by figuring out the translation for one turn - R90 - and the reformed every other turn as a number of
+R90s and execute. I'm sure there's a matrix transform that makes this easier but this was simple enough so I ran with
+it. 
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.

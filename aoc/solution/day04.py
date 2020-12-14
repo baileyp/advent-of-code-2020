@@ -56,6 +56,6 @@ def is_valid(passport, required):
 def is_valid_strict(passport, validations):
     return all(
         validator(passport[field])
-        if field in passport.keys() else False
+        if field in passport else False
         for field, validator in validations.items()
     )
