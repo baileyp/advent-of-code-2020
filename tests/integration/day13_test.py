@@ -18,7 +18,10 @@ def test_part_1(test_case, result):
 
 
 @pytest.mark.parametrize('test_case, result', [
-    (INPUT, None),
+    (INPUT, 1068781),
+    ('\n17,x,13,19', 3417),
+    ('\n67,7,59,61', 754018),
+    ('\n67,x,7,59,61', 779210),
 ])
 def test_part_2(test_case, result):
     file = StringIO(test_case)

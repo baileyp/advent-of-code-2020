@@ -222,6 +222,19 @@ handled rotation by figuring out the translation for one turn - R90 - and the re
 R90s and execute. I'm sure there's a matrix transform that makes this easier but this was simple enough so I ran with
 it. 
 
+#### Day 13 ([puzzle](https://adventofcode.com/2020/day/13), [solution](./aoc/solution/day13.py))
+
+Part 1 was pretty easy so I'm not gonna go into much detail there - just module across the set util one comes up `0`.
+
+Part 2 was… meh. I do love AoC overall but math trivia problems leave a bad taste in my mouth - I'm a software guy not
+a mathematician. Either way, the solution I've got I nicked from someone else, but the algorithm wasn't explained so I
+did my best to mentally walk it and tried to name the variables as close as possible to what I think they're doing. Even
+though I have no idea what the time complexity is, it does run really fast, giving the answer in a few microseconds.
+
+I did Google this a bit more and it seems to be a puzzle based around the
+[modular multiplicative inverse](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse). I couldn't be bothered
+to look up how to apply this in code.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
