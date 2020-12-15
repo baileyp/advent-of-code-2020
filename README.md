@@ -250,6 +250,25 @@ For part two, [zip()](https://docs.python.org/3/library/functions.html#zip) and
 it otherwise would have been without them - they made applying permutations of the floating bits to the address really
 simple and *fairly* terse.
 
+#### Day 15 ([puzzle](https://adventofcode.com/2020/day/15), [solution](./aoc/solution/day15.py))
+
+Today's episode of *Peter Becomes Frustrated By Code* is brought to you by Didn't Read The Requirements Correctly™. I
+kept getting wrong answers - even from my unit tests - and almost reached a point of giving up but then I went back and
+re-read the entire puzzle and found the problem. I *completely* misunderstood the rules for the next number spoken. It
+would take too much typing to get into how, just suffice to say I did and I burned a lot of time on that. Just goes to
+show that, regardless of the software, proper understanding of the requirements matters.
+
+Once I got my head on straight, part 1 wasn't too bad. Given that part 2 was just part 1 but with a larger `n`, I just
+ran my solution as-is to see if it would work. It churned for a while and I didn't feel great about that so I killed the
+process and did a code review looking for performance optimizations. One such optimization was that, in my original
+version, I was storing *all* of the times a number had been spoken. But per the rules, we only need to know about the
+*previous two*, so I made that update so that the space consumption was much more responsible and it improved some of
+the time operations as well.
+
+I let *that* run and it completed in 42 seconds. It's not great but, for 30 million iterations, I'm not sweating it, and
+I don't think there's a universally deterministic way to solve this for all starting conditions. Maybe there is but I
+leave that as an exercise for much smarter people.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
