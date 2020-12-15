@@ -235,6 +235,21 @@ I did Google this a bit more and it seems to be a puzzle based around the
 [modular multiplicative inverse](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse). I couldn't be bothered
 to look up how to apply this in code.
 
+#### Day 14 ([puzzle](https://adventofcode.com/2020/day/14), [solution](./aoc/solution/day14.py))
+
+I didn't find this day's puzzles terribly challenging, although they did make me think a lot about what part of Python's
+standard library I was going to use to get these done. I'm not sure I totally succeeded but I'm relatively happy with
+the result.
+
+I decided pretty early on that I was not going to try to do any of this with bitwise math. It's not my strong suit so
+I instead went with my own transformers to convert numbers in-and-out of binary representations, including a sort-of
+zero-padding to accommodate the width of the integers.
+
+For part two, [zip()](https://docs.python.org/3/library/functions.html#zip) and 
+[itertools.product()](https://docs.python.org/3/library/itertools.html#itertools.product) made my life a lot easier than
+it otherwise would have been without them - they made applying permutations of the floating bits to the address really
+simple and *fairly* terse.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
