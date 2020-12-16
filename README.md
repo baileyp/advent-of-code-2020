@@ -224,12 +224,12 @@ it.
 
 #### Day 13 ([puzzle](https://adventofcode.com/2020/day/13), [solution](./aoc/solution/day13.py))
 
-Part 1 was pretty easy so I'm not gonna go into much detail there - just module across the set util one comes up `0`.
+Part 1 was pretty easy so I'm not gonna go into much detail there - just modulo across the set until one comes up `0`.
 
 Part 2 was… meh. I do love AoC overall but math trivia problems leave a bad taste in my mouth - I'm a software guy not
 a mathematician. Either way, the solution I've got I nicked from someone else, but the algorithm wasn't explained so I
 did my best to mentally walk it and tried to name the variables as close as possible to what I think they're doing. Even
-though I have no idea what the time complexity is, it does run really fast, giving the answer in a few microseconds.
+though I have no idea what the time complexity is - it does run really fast - giving the answer in a few microseconds.
 
 I did Google this a bit more and it seems to be a puzzle based around the
 [modular multiplicative inverse](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse). I couldn't be bothered
@@ -238,7 +238,7 @@ to look up how to apply this in code.
 #### Day 14 ([puzzle](https://adventofcode.com/2020/day/14), [solution](./aoc/solution/day14.py))
 
 I didn't find this day's puzzles terribly challenging, although they did make me think a lot about what part of Python's
-standard library I was going to use to get these done. I'm not sure I totally succeeded but I'm relatively happy with
+standard library I was going to use to get these done. I'm not totally sure I succeeded but I'm relatively happy with
 the result.
 
 I decided pretty early on that I was not going to try to do any of this with bitwise math. It's not my strong suit so
@@ -261,7 +261,7 @@ show that, regardless of the software, proper understanding of the requirements 
 Once I got my head on straight, part 1 wasn't too bad. Given that part 2 was just part 1 but with a larger `n`, I just
 ran my solution as-is to see if it would work. It churned for a while and I didn't feel great about that so I killed the
 process and did a code review looking for performance optimizations. One such optimization was that, in my original
-version, I was storing *all* of the times a number had been spoken. But per the rules, we only need to know about the
+version, I was storing *all* of the times a number had been spoken. But, per the rules, we only need to know about the
 *previous two*, so I made that update so that the space consumption was much more responsible and it improved some of
 the time operations as well.
 
