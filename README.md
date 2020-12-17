@@ -269,6 +269,30 @@ I let *that* run and it completed in 42 seconds. It's not great but, for 30 mill
 I don't think there's a universally deterministic way to solve this for all starting conditions. Maybe there is but I
 leave that as an exercise for much smarter people.
 
+#### Day 16 ([puzzle](https://adventofcode.com/2020/day/16), [solution](./aoc/solution/day16.py))
+
+Not done yet - TBD.
+
+#### Day 17 ([puzzle](https://adventofcode.com/2020/day/17), [solution](./aoc/solution/day17.py))
+
+It's Game of Life again, into the nth dimension!!!
+
+I'm really pleased with my solutions for this day. At first, I started actually building a proper grid of nested
+`defaultdict` objects but as I was typing the loops for this, a 💡 went off - I don't need that. I just need to store
+three integers (the coordinates) of every active cube. Python has this fancy
+[cartesian product](https://docs.python.org/3/library/itertools.html#itertools.product) function that makes finding the
+coordinates of the neighbors a cinch, with an assist from `zip()` Yeah, there's a big nesting of loops but that's
+necessary. Even if you hid it behind a permutation function the resulting **n** would be the same.
+
+I used a `set` to store the grid (the active cube locations only) which has some huge up-sides:
+
+ - Made identifying active cubes for a given coordinate simple and fast, as in most cases `value in set()` is **O(1)**.
+ - Made counting the number of active cubes in the dimensional space simple call to `len()`, also an **O(1)** operation
+   in Python.
+   
+But the real big advantage to this approach was when part 2 reared its head. It was just a handful of tweaks and the
+solution came right after - well, about 15 seconds after - it is an expensive set of loops!
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.

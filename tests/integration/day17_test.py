@@ -19,7 +19,7 @@ def test_part_1(test_case, result):
 
 
 @pytest.mark.parametrize('test_case, result', [
-    (INPUT, None),
+    (INPUT, 848),
 ])
 def test_part_2(test_case, result):
     file = StringIO(test_case)
