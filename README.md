@@ -32,6 +32,23 @@ Or you can run it with input directly as an argument
 $ python -m aoc 1 1 abcdefg
 ```
 
+## Goals
+
+My goals for the puzzles this year are:
+
+- Decent-to-good usage of the standard library
+- No packages
+- The best time and space complexity I can manage
+- Readable solutions
+  - Well named functions
+  - Well named variables
+  - Self documenting style
+- Integration and unit test coverage for everything, where possible
+- Little-to-zero Googling
+
+I realize I will not 100% nail these goals with every single puzzle, but these are what will drive how my solutions come
+together.
+
 ## Notes
 
 Within the comments of each file I'll be capturing some very simple notes about the algorithm and space/time complexity.
@@ -296,10 +313,10 @@ solution came right after - well, about 15 seconds after - it is an expensive se
 #### Day 18 ([puzzle](https://adventofcode.com/2020/day/18), [solution](./aoc/solution/day18.py))
 
 Maths! I did't think these puzzles were too difficult but I have have prior knowledge of the 
-[balanced parenthese](https://www.google.com/search?q=balanced+parentheses) category of problems. Part 1 was very
+[balanced parentheses](https://www.google.com/search?q=balanced+parentheses) category of problems. Part 1 was very
 straight-forward.
 
-Part 2, I could see, was solvable with just using a different function so solve an expression after the parentheses had
+Part 2, I could see, was solvable with just using a different function to solve an expression after the parentheses had
 been satisfied. I do realize I could have implemented another recursive function for this, just as my `solve_expression()`
 works, but I thought I'd try something different and just use `deque` rotation. I'm not sure I love it - it's a little
 clunky - but it works and, well, let's face it - I *do* have other things to do today.
