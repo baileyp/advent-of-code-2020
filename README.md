@@ -293,6 +293,22 @@ I used a `set` to store the grid (the active cube locations only) which has some
 But the real big advantage to this approach was when part 2 reared its head. It was just a handful of tweaks and the
 solution came right after - well, about 15 seconds after - it is an expensive set of loops!
 
+#### Day 18 ([puzzle](https://adventofcode.com/2020/day/18), [solution](./aoc/solution/day18.py))
+
+Maths! I did't think these puzzles were too difficult but I have have prior knowledge of the 
+[balanced parenthese](https://www.google.com/search?q=balanced+parentheses) category of problems. Part 1 was very
+straight-forward.
+
+Part 2, I could see, was solvable with just using a different function so solve an expression after the parentheses had
+been satisfied. I do realize I could have implemented another recursive function for this, just as my `solve_expression()`
+works, but I thought I'd try something different and just use `deque` rotation. I'm not sure I love it - it's a little
+clunky - but it works and, well, let's face it - I *do* have other things to do today.
+
+An interesting note about today is that there are no integration tests. The puzzle directions never give answers for how
+a full set of expressions should resolve. I realize I could do this math on my own and put them in - however - I also
+kind of (read: *definitely*) abused my unit tests and most of them are integration tests anyway (*shhhh*, don't tell my
+boss) so I'm calling it a day on this one and just leaving the integration tests blank.
+
 ## Testing
 
 There are both unit tests and integration tests, all of which require `pytest`.
